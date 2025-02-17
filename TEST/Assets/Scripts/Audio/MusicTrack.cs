@@ -4,5 +4,6 @@ public enum MusicTrack
     BattleTheme,
     VictoryTheme,
     GameOverTheme,
-    test1
+    test2
+
 }
