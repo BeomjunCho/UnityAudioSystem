@@ -130,6 +130,18 @@ public class SFX2DManager : Singleton<SFX2DManager>
         active2dSounds.Clear();
     }
 
+    public void Set2dSoundVolume(string soundName, float newVolume)
+    {
+        if (active2dSounds.ContainsKey(soundName))
+        {
+            active2dSounds[soundName].volume = newVolume;
+        }
+        else
+        {
+            Debug.LogWarning($"SFX3DManager: No active sound found with name '{soundName}'");
+        }
+    }
+
     public void Adjust2DAudioMixerVolume(float volume)
     {
         if (sfx2dMixerGroup != null && sfx2dMixerGroup.audioMixer != null)

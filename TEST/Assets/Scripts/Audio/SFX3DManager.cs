@@ -205,6 +205,18 @@ public class SFX3DManager : Singleton<SFX3DManager>
         active3dSounds.Clear();
     }
 
+    public void Set3dSoundVolume(string soundName, float newVolume)
+    {
+        if (active3dSounds.ContainsKey(soundName))
+        {
+            active3dSounds[soundName].volume = newVolume;
+        }
+        else
+        {
+            Debug.LogWarning($"SFX3DManager: No active sound found with name '{soundName}'");
+        }
+    }
+
     public void Adjust3DAudioMixerVolume(float volume)
     {
         if (sfx3dMixerGroup != null && sfx3dMixerGroup.audioMixer != null)
