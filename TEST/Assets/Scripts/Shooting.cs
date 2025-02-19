@@ -12,9 +12,6 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            SFX3DManager.Instance.Play3dSfx("Shooting", ShootingClip, spawnPoint, 0.5f);
-            //SFX2DManager.Instance.Play2dSfx("ShootingClip", ShootingClip, 0.5f);
-
             GameObject newBullet = Instantiate(bullet, spawnPoint.position, Quaternion.identity);
             Rigidbody rb = newBullet.GetComponent<Rigidbody>();
             rb.AddForce(spawnPoint.forward * shootForce, ForceMode.Impulse);

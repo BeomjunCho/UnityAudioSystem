@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{25184939-403c-4771-a284-7776cc4714d5}">
+		<property name="assetPath">
+			<value>SF-CK Data Telemetry Long 01.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>29.984000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{856b51b9-2b1a-4905-b76d-58f3e39a271d}</destination>
+		</relationship>
+	</object>
+</objects>

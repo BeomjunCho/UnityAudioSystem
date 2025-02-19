@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{95cd508f-449f-4b2c-b8c4-51b6f8005565}">
+		<property name="assetPath">
+			<value>Music/music_lvl_03_east_high_pre_rest_re.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.4286394557823128</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{856b51b9-2b1a-4905-b76d-58f3e39a271d}</destination>
+		</relationship>
+	</object>
+</objects>

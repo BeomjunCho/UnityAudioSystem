@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     {
         // Start the coroutine when the game begins.
         StartCoroutine(MoveEnemy());
-        SFX3DManager.Instance.Play3dSfx("Hovering", testSound, transform, 1.0f, true);
     }
 
     /// <summary>
