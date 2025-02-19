@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class Shooting : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Shooting : MonoBehaviour
     public GameObject bullet;
     public Transform spawnPoint;
     public float shootForce = 10f;
+
+    [SerializeField] private EventReference TestSound2d;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +25,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            SFX3DManager.Instance.Stop3dSound("Shooting");
+            AudioManager.Instance.PlayOneShot(TestSound2d, this.transform.position);
         }
     }
 
