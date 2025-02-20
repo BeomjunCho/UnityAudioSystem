@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMOD.Studio;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _lookSpeed; // how fast player camera moves
     [SerializeField] private float _lookXLimit; // Up Down angle limit
 
+    // audio
+    private EventInstance footSteps;
 
     Vector3 moveDirection = Vector3.zero; // Direction for moving
     float rotationX = 0;
@@ -21,12 +24,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         SetUp();
+        footSteps = AudioManager.Instance.CreateEventInstance(FmodEvents.Instance.footSteps);
+        footSteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     /// <summary>
     /// Set up rigid body, freeze rotation and can move statement
     /// </summary>
-    /// <param name="inventory"></param>
     public void SetUp()
     {
         rb = GetComponent<Rigidbody>(); // Get player rigid body
@@ -76,11 +80,32 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse); // Apply upward force for jumping
             }
-        }
 
+            UpdateSound();
+        }
 
     }
 
+    private void UpdateSound()
+    {
+        if (rb.linearVelocity.magnitude > 0.1f && IsGrounded()) // Avoid triggering on tiny movements
+        {
+            PLAYBACK_STATE playbackState;
+            footSteps.getPlaybackState(out playbackState);
+
+            // Update 3D attributes every frame
+            footSteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+
+            if (playbackState == PLAYBACK_STATE.STOPPED)
+            {
+                footSteps.start();
+            }
+        }
+        else
+        {
+            footSteps.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
 
     // return true or false depending on player and ground distance
     bool IsGrounded()

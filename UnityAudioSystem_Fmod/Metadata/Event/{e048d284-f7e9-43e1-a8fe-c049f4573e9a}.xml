@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{e048d284-f7e9-43e1-a8fe-c049f4573e9a}">
 		<property name="name">
-			<value>2D_Oneshot</value>
+			<value>Test2DAudio</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3227dcd5-602d-4eee-9ba5-aa23eed0c2c6}</destination>
+			<destination>{c6d59c2f-d91c-4063-b0c6-7c1414986a80}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{b64908c5-df0e-4f8c-a8bb-1c050a074ad0}</destination>
@@ -56,7 +56,7 @@
 			<destination>{ded3f4cf-9b54-46bd-8aab-262c74bf5c92}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{166da0e5-6622-4edc-8b7c-48f8abd30bf0}</destination>
+			<destination>{ce5f7006-d38c-4017-b36b-9954e4efb060}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{9b279770-4d77-447b-9701-83f8a8adfa0f}" />

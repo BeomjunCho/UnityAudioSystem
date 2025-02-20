@@ -1,17 +1,47 @@
 using System.Collections;
+using FMODUnity;
 using UnityEngine;
 
+[RequireComponent(typeof(StudioEventEmitter))]
 public class Enemy : MonoBehaviour
 {
-    public AudioClip testSound;
     // Speed at which the enemy moves.
     public float speed = 5f;
     // Define the left and right limits along the x-axis.
     public float leftLimit = -50f;
     public float rightLimit = 50f;
 
+    // audio
+    private StudioEventEmitter emitter;
+
     void Start()
     {
+        // Ensure AudioManager is not null before calling it
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogError("AudioManager instance is missing!");
+            return;
+        }
+
+        if (FmodEvents.Instance == null)
+        {
+            Debug.LogError("FmodEvents instance is missing!");
+            return;
+        }
+
+        // Ensure event is assigned properly
+        if (FmodEvents.Instance.enemy.IsNull)
+        {
+            Debug.LogError("Enemy FMOD event is null!");
+            return;
+        }
+
+        emitter = AudioManager.Instance.InitializeEventEmitter(FmodEvents.Instance.enemy, this.gameObject);
+        if (emitter == null)
+        {
+            Debug.LogError("Failed to initialize FMOD Event Emitter!");
+            return;
+        }
         // Start the coroutine when the game begins.
         StartCoroutine(MoveEnemy());
     }
@@ -23,6 +53,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
+            emitter.Play();
             // Move from the current position to the right limit.
             yield return StartCoroutine(MoveToPosition(new Vector3(rightLimit, transform.position.y, transform.position.z)));
             // Then move from the right limit to the left limit.
